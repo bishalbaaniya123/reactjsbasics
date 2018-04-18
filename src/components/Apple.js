@@ -24,8 +24,8 @@ class SayHello extends React.Component {
             x: x,
             randomNo1: Math.floor((Math.random() * 100) + 1),
             randomNo2: Math.floor((Math.random() * 100) + 1),
-            playerOneWins : 0,
-            playerTwoWins : 0
+            playerOneWins: 0,
+            playerTwoWins: 0
         };
         // This line is important!
         // this.handleClick = this.handleClick.bind(this);
@@ -42,21 +42,41 @@ class SayHello extends React.Component {
         this.setState({randomNo2: Math.floor((Math.random() * 100) + 1)});
         var difference = Math.abs(this.state.randomNo1 - this.state.randomNo2);
         if (this.state.randomNo1 > this.state.randomNo2) {
-            this.setState({playerOneWins : this.state.playerOneWins + 1});
+            this.setState({playerOneWins: this.state.playerOneWins + 1});
             console.log("Player 1 wins with score " + this.state.randomNo1 + " when Player 2 had " + this.state.randomNo2 + "with a difference of " + difference);
         }
         else {
-            this.setState({playerTwoWins : this.state.playerTwoWins + 1});
+            this.setState({playerTwoWins: this.state.playerTwoWins + 1});
             console.log("Player 2 wins with score " + this.state.randomNo2 + " when Player 1 had " + this.state.randomNo1 + "with a difference of " + difference);
 
         }
         console.log("Player one has won " + this.state.playerOneWins + " Times and Player two has won " + this.state.playerTwoWins + " times");
-        if (this.state.playerOneWins || this.state.playerTwoWins > 10){
-            console.log("Someone has won!!!!!!");
+        if (this.state.playerOneWins >= 10 || this.state.playerTwoWins >= 10) {
+            if (this.state.playerOneWins > this.state.playerTwoWins) {
+                console.log("Player One has won!!!!!!");
+            } else {
+                console.log("Player Two has won!!!!!!");
+            }
+        }
+        let NewMap = new Map();
+        NewMap.set("a", ["a","b","c","d","e","f"]);
+        NewMap.set("a", "You are gone a");
+        NewMap.set("b", "You are gone b");
+        NewMap.set("c", "You are gone c");
+        for(let [key, value] of NewMap){
+            // console.log(key + " - " + value);
+        }
+        let NewSet = new Set();
+        NewSet.add("a");
+        NewSet.add("b");
+        NewSet.add("a");
+        for(let item of NewSet){
+            console.log(item);
+            console.log(typeof NewMap);
         }
     }
 
-    render(){
+    render() {
         // Because `this.handleClick` is bound, we can use it as an event handler.
         return (
             <button onClick={this.randomlyHandleClick}>
