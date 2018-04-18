@@ -5,8 +5,14 @@ class Ball extends Component
     render()
     {
         return (
-            <div></div>
+            <div>This is from ball</div>
         );
     }
 }
-export default `Ball`;
+class Greeting extends React.Component {
+    render() {
+        return <h1>Hello, {this.props.name}</h1>;
+    }
+}
+Greeting.defaultProps = {name: "Mary"};
+export {Ball, Greeting};
